@@ -1,0 +1,16 @@
+{
+    "login": {
+        "title": "Login",
+        "label": "Username",
+        "placeholder": "Enter username",
+        "button": "Login"
+    },
+    "toast": {
+        "succ": "Login was successful!",
+        "err": "Something went wrong!"
+    },
+    "postPage": {
+        "button": "Logout",
+        "title": "Post"
+    }
+}
