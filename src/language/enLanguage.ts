@@ -1,0 +1,20 @@
+const enLanguage = {
+    translation: {
+        loginPage: {
+            title: 'Login',
+            label: 'Username',
+            placeholder: 'Enter username',
+            button: 'Login',
+        },
+        toast: {
+            succ: 'Login was successful!',
+            err: 'Something went wrong!',
+        },
+        postPage: {
+            button: 'Logout',
+            title: 'Post',
+        },
+    },
+};
+
+export default enLanguage;

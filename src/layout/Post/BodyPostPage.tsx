@@ -3,8 +3,10 @@ import { axiosInstant, tokenManagerInstance } from '../../service/request';
 import { useAtom } from 'jotai';
 import { allInfoPost } from '../../store';
 import ListPost from './ListPost';
+import { useTranslation } from 'react-i18next';
 
 const BodyPostPage = () => {
+    const { t } = useTranslation();
     const [_, setAllInfoPost] = useAtom(allInfoPost);
 
     const fetchPosts = async () => {
@@ -25,7 +27,9 @@ const BodyPostPage = () => {
 
     return (
         <div className="px-[85px] py-2">
-            <h1 className="text-[32px] leading-10 mb-2">Post</h1>
+            <h1 className="text-[32px] leading-10 mb-2">
+                {t('postPage.title')}
+            </h1>
             <ListPost />
         </div>
     );

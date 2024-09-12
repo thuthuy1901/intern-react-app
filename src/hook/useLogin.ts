@@ -5,8 +5,10 @@ import { useAtom } from 'jotai';
 import { username } from '../store';
 import useToast from './useToast';
 import { BASE_API } from '../service/request';
+import { useTranslation } from 'react-i18next';
 
 const useLogin = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [_, setUser] = useAtom(username);
@@ -27,14 +29,14 @@ const useLogin = () => {
                     localStorage.setItem('refreshToken', refreshToken);
                     localStorage.setItem('username', username);
                     setUser(username);
-                    notifySuccess('Login was successful!');
+                    notifySuccess(t('toast.succ'));
 
                     navigate('/post');
                 } else {
                     throw new Error('Login fail');
                 }
             } catch {
-                notifyError('Something went wrong!');
+                notifyError(t('toast.err'));
             } finally {
                 setIsLoading(false);
             }

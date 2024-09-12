@@ -3,8 +3,10 @@ import { useLogout } from '../../hook';
 import { useAtom } from 'jotai';
 import { username } from '../../store';
 import iconUser from '../../assets/userIcon.png';
+import { useTranslation } from 'react-i18next';
 
 const HeaderPostPage = memo(() => {
+    const { t } = useTranslation();
     const { onLogout } = useLogout();
     const [name] = useAtom(username);
     return (
@@ -13,7 +15,7 @@ const HeaderPostPage = memo(() => {
                 <img src={iconUser} alt="iconUser" />
                 <p className="mb-0">{name}</p>
             </div>
-            <button onClick={() => onLogout()}>Logout</button>
+            <button onClick={() => onLogout()}>{t('postPage.button')}</button>
         </header>
     );
 });
