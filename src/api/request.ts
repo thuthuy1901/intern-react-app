@@ -1,24 +1,25 @@
 import TokenManager, { injectBearer } from 'brainless-token-manager';
 import axios from 'axios';
 import { API_PATH, BASE_API } from './constant';
+import { Login } from '../store/constant';
 
 const tokenManager = new TokenManager({
     getAccessToken: async () => {
-        const token = localStorage.getItem('accessToken');
+        const token = localStorage.getItem(Login.Access_Token);
         return `${token}`;
     },
     getRefreshToken: async () => {
-        const refreshToken = localStorage.getItem('refreshToken');
+        const refreshToken = localStorage.getItem(Login.Refresh_Token);
 
         return `${refreshToken}`;
     },
     onInvalidRefreshToken: () => {
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
+        localStorage.removeItem(Login.Access_Token);
+        localStorage.removeItem(Login.Refresh_Token);
     },
 
     executeRefreshToken: async () => {
-        const refreshToken = localStorage.getItem('refreshToken');
+        const refreshToken = localStorage.getItem(Login.Refresh_Token);
 
         if (!refreshToken) {
             return {
@@ -40,8 +41,8 @@ const tokenManager = new TokenManager({
     },
     onRefreshTokenSuccess: ({ token, refresh_token }) => {
         if (token && refresh_token) {
-            localStorage.setItem('accessToken', token);
-            localStorage.setItem('refreshToken', refresh_token);
+            localStorage.setItem(Login.Access_Token, token);
+            localStorage.setItem(Login.Refresh_Token, refresh_token);
         }
     },
 });
