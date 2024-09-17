@@ -2,10 +2,11 @@ import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
-import { username } from '../store';
 import useToast from './useToast';
-import { BASE_API } from '../service/request';
 import { useTranslation } from 'react-i18next';
+import { username } from '../store/jotai';
+import { Login } from '../store/constant';
+import { API_PATH } from '../api/constant';
 
 const useLogin = () => {
     const { t } = useTranslation();
@@ -18,16 +19,16 @@ const useLogin = () => {
         async (username: string) => {
             setIsLoading(true);
             try {
-                const response = await axios.post(`${BASE_API}/auth/login`, {
+                const response = await axios.post(API_PATH.AUTH_LOGIN, {
                     username,
                 });
 
                 if (response.data.accessToken) {
                     const { accessToken, refreshToken } = response.data;
 
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
-                    localStorage.setItem('username', username);
+                    localStorage.setItem(Login.Access_Token, accessToken);
+                    localStorage.setItem(Login.Refresh_Token, refreshToken);
+                    localStorage.setItem(Login.Username, username);
                     setUser(username);
                     notifySuccess(t('toast.succ'));
 

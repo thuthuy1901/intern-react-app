@@ -1,6 +1,6 @@
 import { Form, Input, Button } from 'antd';
-import { useLogin } from '../../hook';
 import { useTranslation } from 'react-i18next';
+import useLogin from '../../hook/useLogin';
 
 type valueSubmit = {
     username: string;

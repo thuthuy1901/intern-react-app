@@ -1,8 +1,7 @@
 import { atom } from 'jotai';
+import { hasUserName } from '../auth/useAuth';
 
-export const username = atom<string | null>(
-    localStorage.getItem('username') || null
-);
+export const username = atom<string | null>(hasUserName() || null);
 
 export type allInfoPostType = {
     current_page: number;

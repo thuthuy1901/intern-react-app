@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { axiosInstant, tokenManagerInstance } from '../../service/request';
 import { useAtom } from 'jotai';
-import { allInfoPost } from '../../store';
-import ListPost from './ListPost';
 import { useTranslation } from 'react-i18next';
+import { allInfoPost } from '../../../store/jotai';
+import { axiosInstant, tokenManagerInstance } from '../../../api/request';
+import ListPost from './ListPost';
+import { API_PATH } from '../../../api/constant';
 
 const BodyPostPage = () => {
     const { t } = useTranslation();
@@ -13,7 +14,7 @@ const BodyPostPage = () => {
         try {
             const respond = await tokenManagerInstance(
                 axiosInstant.get,
-                '/posts'
+                API_PATH.GET_POSTS
             );
             setAllInfoPost(respond.data);
         } catch (error) {

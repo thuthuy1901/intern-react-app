@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { useLogout } from '../../hook';
 import { useAtom } from 'jotai';
-import { username } from '../../store';
-import iconUser from '../../assets/userIcon.png';
+import iconUser from '../../../assets/userIcon.png';
 import { useTranslation } from 'react-i18next';
+import { username } from '../../../store/jotai';
+import useLogout from '../../../hook/useLogout';
 
 const HeaderPostPage = memo(() => {
     const { t } = useTranslation();

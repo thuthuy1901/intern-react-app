@@ -1,7 +1,6 @@
 import TokenManager, { injectBearer } from 'brainless-token-manager';
 import axios from 'axios';
-
-export const BASE_API = 'https://api-test-web.agiletech.vn';
+import { API_PATH, BASE_API } from './constant';
 
 const tokenManager = new TokenManager({
     getAccessToken: async () => {
@@ -28,7 +27,7 @@ const tokenManager = new TokenManager({
             };
         }
 
-        const response = await axiosInstant.post('/auth/refresh-token', {
+        const response = await axiosInstant.post(API_PATH.REFRESH_TOKEN, {
             refreshToken,
         });
         const { accessToken: accessTokenNew, refreshToken: refreshTokenNew } =

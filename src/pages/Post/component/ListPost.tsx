@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
-import { listPost } from '../../store';
 import { Card, List, Tag } from 'antd';
+import { listPost } from '../../../store/jotai';
 
 const ListPost = () => {
     const [posts] = useAtom(listPost);
