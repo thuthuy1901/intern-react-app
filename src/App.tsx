@@ -8,7 +8,6 @@ import { router } from './routes/routes';
 function App() {
     return (
         <>
-            test
             <RouterProvider router={router} />
             <ToastContainer />
             <ButtonToggleLanguage />
